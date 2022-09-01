@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "SFR";
+  src: url("../public/fonts/SFPRODISPLAYREGULAR.OTF");
+}
+@font-face {
+  font-family: "SFSB";
+  src: url("../public/fonts/SFPRODISPLAYSEMIBOLDITALIC.OTF");
+}
+@font-face {
+  font-family: "SFB";
+  src: url("../public/fonts/SFPRODISPLAYBOLD.OTF");
+}
+@font-face {
+  font-family: "SFM";
+  src: url("../public/fonts/SFPRODISPLAYMEDIUM.OTF");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "SFR", sans-serif !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.nav_wrapper {
+  background-color: rgba(56, 132, 247, 0.16);
+}
