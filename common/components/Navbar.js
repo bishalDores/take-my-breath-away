@@ -1,11 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+import Link from "next/link";
+import MenuIcon from "@mui/icons-material/Menu";
+import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const menu = [
+    {
+      name: "Flight",
+      path: "/",
+    },
+    {
+      name: "Bus",
+      path: "/",
+    },
+    {
+      name: "Hotel",
+      path: "/",
+    },
+    {
+      name: "Holiday",
+      path: "/",
+    },
+    {
+      name: "Visa",
+      path: "/",
+    },
+    {
+      name: "Visa Guide",
+      path: "/",
+    },
+  ];
+
+  const toggleDrawer = () => {
+    setShowMobileMenu(!showMobileMenu);
+  };
   return (
     <div className="nav_wrapper">
-      <div className="container">
-        <div className="logo">this is logo</div>
+      <div className="container nav_wrapper-inner">
+        <div className="logo">
+          <Link href="/">
+            <a>
+              <img src="/images/logo.png" alt="Share Trip Logo" />
+            </a>
+          </Link>
+        </div>
+        <div className="menus">
+          <ul>
+            {menu.map((m, i) => (
+              <li key={i}>
+                <Link href={m.path}>
+                  <a>{m.name}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hamburger_icon" onClick={toggleDrawer}>
+          <MenuIcon />
+        </div>
       </div>
+      <MobileMenu open={showMobileMenu} toggleDrawer={toggleDrawer} menu={menu} />
     </div>
   );
 };

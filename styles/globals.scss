@@ -25,15 +25,211 @@ body {
 * {
   box-sizing: border-box;
 }
-
+@mixin responsive-size($size) {
+  @if $size == XLdevice {
+    @media (max-width: 1440px) {
+      @content;
+    }
+  }
+  @if $size == Ldevice {
+    @media (max-width: 1199px) {
+      @content;
+    }
+  }
+  @if $size == Ltab {
+    @media (max-width: 992px) {
+      @content;
+    }
+  }
+  @if $size == tab {
+    @media (max-width: 769px) {
+      @content;
+    }
+  }
+  @if $size == mobile {
+    @media (max-width: 577px) {
+      @content;
+    }
+  }
+}
+.mui-style-ahj2mt-MuiTypography-root {
+  font-family: "SFR", sans-serif !important;
+}
 .nav_wrapper {
   background-color: rgba(56, 132, 247, 0.16);
 }
 
+.nav_wrapper-inner {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  position: relative;
+  .logo {
+    a {
+      img {
+        width: 178px;
+      }
+    }
+  }
+  .menus {
+    ul {
+      list-style: none;
+      display: flex;
+      margin-bottom: 0;
+      li {
+        a {
+          text-decoration: none;
+          color: #000000;
+          padding: 16px;
+          font-size: 14px;
+        }
+      }
+    }
+    @include responsive-size(tab) {
+      display: none;
+    }
+  }
+  .hamburger_icon {
+    position: absolute;
+    right: 0;
+    padding-right: 12px;
+    display: none;
+    @include responsive-size(tab) {
+      display: block;
+    }
+  }
+}
+.mobile_menu_wrapper {
+  padding: 20px;
+  .close_icon {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .mobile_menu_list {
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        padding-bottom: 8px;
+        a {
+          text-decoration: none;
+          color: #000000;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
 .left_panel {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .filterTab_wrapper {
+    .header {
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 36px;
+      p {
+        &:first-child {
+          font-size: 14px;
+          color: #000000;
+          font-family: "SFM";
+        }
+        &:nth-child(2) {
+          color: #3884f7;
+          font-size: 16px;
+          font-family: "SFM";
+        }
+      }
+    }
+    .price_wrapper {
+      margin-top: 26px;
+      .price_range_inner {
+        padding: 0 16px;
+        p {
+          font-size: 16px;
+          color: #000000;
+          font-family: "SFM";
+          padding-bottom: 10px;
+          border-bottom: 1px solid #e0e0e1;
+        }
+        .range_slider {
+          .price_range {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            h5 {
+              font-size: 16px;
+              font-family: "SFB";
+              margin-bottom: 0;
+            }
+            h6 {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .generic_wrapper {
+      margin-top: 26px;
+      .generic_wrapper_inner {
+        padding: 0 16px;
+        p {
+          font-size: 16px;
+          color: #000000;
+          font-family: "SFM";
+          padding-bottom: 10px;
+          border-bottom: 1px solid #e0e0e1;
+        }
+        .schedule_departure {
+          p {
+            border-bottom: none;
+            font-size: 14px;
+            font-family: "SFM";
+            color: #4c4c4c;
+            margin-bottom: 10px;
+            margin-top: 32px;
+            padding-bottom: 0;
+          }
+          .time_segment {
+            .time_segment-single {
+              border: 1px solid #f3f3f6;
+              border-radius: 3px;
+              padding: 10px 8px;
+              margin-bottom: 6px;
+              cursor: pointer;
+              transition: all 0.2s;
+              span {
+                font-family: "SFM";
+                font-size: 16px;
+                margin-left: 8px;
+              }
+              &:hover {
+                border-color: #1882ff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .right_panel {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  // border-radius: 6px;
+  .service_wrapper {
+    .bus_amount {
+      font-size: 16px;
+      font-family: "SFM";
+    }
+  }
+}
+.custom_hr {
+  border-top: 1px solid #cbcaca;
+  margin: 0;
 }
