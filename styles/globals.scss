@@ -226,10 +226,113 @@ body {
     .bus_amount {
       font-size: 16px;
       font-family: "SFM";
+      margin-bottom: 0;
+    }
+    svg {
+      margin-right: 15px;
     }
   }
 }
 .custom_hr {
   border-top: 1px solid #cbcaca;
   margin: 0;
+}
+.tab_details_generic {
+  margin-top: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  .ticket_details {
+    .ticket_details-inner {
+      padding: 16px 6px;
+      .details_heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .bus_name {
+          padding: 2px 17px;
+          background: #bbddff;
+          border-radius: 16px;
+          font-size: 18px;
+          font-family: "SFM";
+          font-weight: 600;
+        }
+        .bus_num {
+          font-size: 10px;
+          color: #4c4c4c;
+          margin-top: 4px;
+          text-align: center;
+        }
+        p {
+          margin-bottom: 0;
+          font-size: 16px;
+          font-family: "SFM";
+        }
+        .price {
+          span {
+            margin-right: 9px;
+          }
+        }
+      }
+      .from_to_wrapper {
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include responsive-size(mobile) {
+          flex-direction: column;
+        }
+        .from_wrapper {
+          p {
+            margin-bottom: 0;
+            &:nth-child(1) {
+              font-size: 12px;
+              color: #4c4c4c;
+              margin-bottom: 2px;
+            }
+            &:nth-child(2) {
+              font-size: 16px;
+            }
+            &:nth-child(3) {
+              font-size: 16px;
+              font-weight: 600;
+              margin-bottom: 2px;
+            }
+            &:nth-child(4) {
+              font-size: 14px;
+              color: #4c4c4c;
+            }
+            &:nth-child(5) {
+              font-size: 12px;
+              color: #4c4c4c;
+            }
+          }
+          @include responsive-size(mobile) {
+            margin-bottom: 10px;
+          }
+        }
+        .travel_duration {
+          p {
+            margin-bottom: 0;
+            text-align: center;
+          }
+          .seats_available {
+            color: #ef7e46;
+            margin-top: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 2px;
+          }
+          .duration {
+            font-size: 12px;
+            color: #4c4c4c;
+          }
+          @include responsive-size(tab) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+  .price_details {
+  }
 }
