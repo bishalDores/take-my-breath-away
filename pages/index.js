@@ -18,6 +18,28 @@ const data = {
     { time_segment: "12:00 - 17:59", icon: "/images/time_segment.svg" },
     { time_segment: "18:00 - 23:59", icon: "/images/time_segment.svg" },
   ],
+  seats: {
+    sold: {
+      amount: 3,
+      image: "/images/sold.svg",
+    },
+    booked: {
+      amount: 2,
+      image: "/images/booked.svg",
+    },
+    available: {
+      amount: 14,
+      image: "/images/available.svg",
+    },
+    selected: {
+      amount: 2,
+      image: "/images/selected.svg",
+    },
+    blocked: {
+      amount: 20,
+      image: "images/blocked.svg",
+    },
+  },
   total_bus: 48,
 };
 

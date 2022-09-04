@@ -10,9 +10,45 @@ import {
   TabTwoIconWhite,
 } from "../svgIcons";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+const boarding_names = [
+  "Kalabagan",
+  "Gabtoli",
+  "Rajarbagh",
+  "Kachpur Bridge",
+  "Komlapur",
+  "Airport",
+];
+
+const dropping_name = [
+  "Dampara",
+  "Tiger pass",
+  "Pahartoli",
+  "Pathorghata",
+  "Railway colony",
+];
 
 const ServiceDetails = ({ data }) => {
   const [value, setValue] = React.useState(1);
+  const [locations, setLocations] = useState({
+    boarding: "",
+    dropping: "",
+  });
   const matches = useMediaQuery("(max-width:577px)");
 
   const handleChange = (event, newValue) => {
@@ -20,6 +56,9 @@ const ServiceDetails = ({ data }) => {
     setValue(newValue);
   };
 
+  const handleChangeLocation = (e) => {
+    setLocations({ ...locations, [e.target.name]: e.target.value });
+  };
   return (
     <div className="service_wrapper">
       <p className="bus_amount">{data.total_bus} Available Buses</p>
@@ -87,7 +126,7 @@ const ServiceDetails = ({ data }) => {
           <div className="tab_details_generic">
             <div className="container">
               <div className="row">
-                <div className="col-md-12 col-lg-8 ticket_details">
+                <div className="col-md-12 col-lg-9 ticket_details">
                   <div className="ticket_details-inner">
                     <div className="details_heading">
                       <p className="ac_type">AC</p>
@@ -123,9 +162,80 @@ const ServiceDetails = ({ data }) => {
                         <p>23 June 2021</p>
                       </div>
                     </div>
+                    <div className="destination_wrapper">
+                      <div className="row">
+                        <div className="col-md-6 boarding_point">
+                          <FormControl sx={{ marginBottom: 1, width: "100%" }}>
+                            {" "}
+                            <InputLabel
+                              id="boarding-point"
+                              sx={{
+                                fontSize: "14px",
+                                top: "-7px",
+                              }}
+                            >
+                              Boarding Point
+                            </InputLabel>
+                            <Select
+                              labelId="boarding-point"
+                              id="boarding-point"
+                              value={locations.boarding}
+                              onChange={handleChangeLocation}
+                              input={<OutlinedInput label="Boarding Point" />}
+                              MenuProps={MenuProps}
+                              name="boarding"
+                              sx={{ fontSize: "14px", fontFamily: "SFM" }}
+                              size="small"
+                            >
+                              {boarding_names.map((name) => (
+                                <MenuItem key={name} value={name}>
+                                  {name}
+                                </MenuItem>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        </div>
+                        <div className="col-md-6">
+                          <FormControl sx={{ marginBottom: 1, width: "100%" }}>
+                            {" "}
+                            <InputLabel
+                              id="dropping-point"
+                              sx={{
+                                fontSize: "14px",
+                                top: "-7px",
+                              }}
+                            >
+                              Dropping Point
+                            </InputLabel>
+                            <Select
+                              labelId="dropping-point"
+                              id="dropping-point"
+                              value={locations.dropping}
+                              onChange={handleChangeLocation}
+                              input={<OutlinedInput label="Dropping Point" />}
+                              MenuProps={MenuProps}
+                              name="dropping"
+                              sx={{ fontSize: "14px", fontFamily: "SFM" }}
+                              size="small"
+                            >
+                              {dropping_name.map((name) => (
+                                <MenuItem key={name} value={name}>
+                                  {name}
+                                </MenuItem>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="seats_count">
+                    <div className="row">
+                      <div className="col-12">seats sections</div>
+                    </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-12 price_details">
+                <div className="col-lg-3 col-md-12 price_details">
                   per person
                 </div>
               </div>

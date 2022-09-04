@@ -334,6 +334,20 @@ body {
           }
         }
       }
+      .destination_wrapper {
+        margin-top: 43px;
+        .boarding_point {
+          @include responsive-size(tab) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+    .seats_count {
+      margin-right: -12px;
+      margin-left: -12px;
+      background: #fafafa;
+      padding: 8px 18px;
     }
   }
   .price_details {
