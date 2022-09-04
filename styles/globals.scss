@@ -348,8 +348,72 @@ body {
       margin-left: -12px;
       background: #fafafa;
       padding: 8px 18px;
+      .seats_count-inner {
+        display: flex;
+        @include responsive-size(tab) {
+          flex-wrap: wrap;
+        }
+        @include responsive-size(mobile) {
+          flex-wrap: wrap;
+        }
+        .single {
+          display: flex;
+          align-items: center;
+          flex-basis: 20%;
+          @include responsive-size(tab) {
+            flex-basis: 25%;
+            margin-bottom: 10px;
+          }
+          @include responsive-size(mobile) {
+            flex-basis: 50%;
+            margin-bottom: 10px;
+          }
+          img {
+            margin-right: 10px;
+          }
+          span {
+            font-size: 14px;
+            color: #4c4c4c;
+          }
+        }
+      }
     }
   }
   .price_details {
+    border-left: 1px solid #f6f6f6;
+    .price_calculation {
+      height: 210px;
+      background-color: #e5f2fe;
+      margin-left: -12px;
+      margin-right: -12px;
+      text-align: right;
+      padding: 30px 16px;
+      margin-bottom: 20px;
+      p {
+        &:nth-child(1) {
+          margin-bottom: 0;
+          font-size: 10px;
+          font-family: "SFM";
+        }
+        &:nth-child(2) {
+          color: rgba(35, 95, 216, 1);
+          margin-bottom: 0;
+          font-size: 24px;
+          font-family: "SFM";
+        }
+        &:nth-child(3) {
+          color: #1882ff;
+          margin-bottom: 16px;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+      .cancel_policy {
+        color: #1882ff;
+        margin-bottom: 0px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
   }
 }
