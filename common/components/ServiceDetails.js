@@ -9,6 +9,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
+import SeatPlan from "./SeatPlan";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -229,7 +230,9 @@ const ServiceDetails = ({ data }) => {
                     </Button>
                     <p className="cancel_policy">Cancellation Policy</p>
                   </div>
-                  <div className="seat_panel"></div>
+                  <div className="seat_panel">
+                    <SeatPlan />
+                  </div>
                 </div>
               </div>
             </div>
