@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { Diamond, DiamondWhite, Lightning, LightningWhite, TabTwoIcon, TabTwoIconWhite } from "../svgIcons";
+import {
+  Diamond,
+  DiamondWhite,
+  Lightning,
+  LightningWhite,
+  TabTwoIcon,
+  TabTwoIconWhite,
+} from "../svgIcons";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const ServiceDetails = ({ data }) => {
   const [value, setValue] = React.useState(1);
+  const matches = useMediaQuery("(max-width:577px)");
 
   const handleChange = (event, newValue) => {
     console.log(newValue);
@@ -17,13 +26,14 @@ const ServiceDetails = ({ data }) => {
 
       <div className="service_tabs">
         <Tabs
-          variant="fullWidth"
+          variant={matches ? "scrollable" : "fullWidth"}
           value={value}
           onChange={handleChange}
           scrollButtons
           allowScrollButtonsMobile
           aria-label="basic tabs example"
           sx={{
+            minHeight: 0,
             "& .MuiTabs-scroller": {
               border: "1px solid #F6F6F6",
               boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.15)",
@@ -45,10 +55,30 @@ const ServiceDetails = ({ data }) => {
             },
           }}
         >
-          <Tab icon={value === 0 ? <DiamondWhite /> : <Diamond />} iconPosition="start" label="Earliest Buses" {...a11yProps(0)} />
-          <Tab icon={value === 1 ? <TabTwoIconWhite /> : <TabTwoIcon />} iconPosition="start" label="Cheapest Buses" {...a11yProps(1)} />
-          <Tab icon={value === 2 ? <LightningWhite /> : <Lightning />} iconPosition="start" label="Available Seats" {...a11yProps(2)} />
-          <Tab icon={value === 3 ? <LightningWhite /> : <Lightning />} iconPosition="start" label="Fastest Trips" {...a11yProps(3)} />
+          <Tab
+            icon={value === 0 ? <DiamondWhite /> : <Diamond />}
+            iconPosition="start"
+            label="Earliest Buses"
+            {...a11yProps(0)}
+          />
+          <Tab
+            icon={value === 1 ? <TabTwoIconWhite /> : <TabTwoIcon />}
+            iconPosition="start"
+            label="Cheapest Buses"
+            {...a11yProps(1)}
+          />
+          <Tab
+            icon={value === 2 ? <LightningWhite /> : <Lightning />}
+            iconPosition="start"
+            label="Available Seats"
+            {...a11yProps(2)}
+          />
+          <Tab
+            icon={value === 3 ? <LightningWhite /> : <Lightning />}
+            iconPosition="start"
+            label="Fastest Trips"
+            {...a11yProps(3)}
+          />
         </Tabs>
         <TabPanel value={value} index={0}>
           Item One
@@ -57,7 +87,7 @@ const ServiceDetails = ({ data }) => {
           <div className="tab_details_generic">
             <div className="container">
               <div className="row">
-                <div className="col-md-9 ticket_details">
+                <div className="col-md-12 col-lg-8 ticket_details">
                   <div className="ticket_details-inner">
                     <div className="details_heading">
                       <p className="ac_type">AC</p>
@@ -95,7 +125,9 @@ const ServiceDetails = ({ data }) => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-3 price_details">per person</div>
+                <div className="col-lg-4 col-md-12 price_details">
+                  per person
+                </div>
               </div>
             </div>
           </div>
@@ -124,7 +156,13 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
       {value === index && children}
     </div>
   );
