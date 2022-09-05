@@ -9,26 +9,32 @@ const Navbar = () => {
     {
       name: "Flight",
       path: "/",
+      selected: false,
     },
     {
       name: "Bus",
       path: "/",
+      selected: true,
     },
     {
       name: "Hotel",
       path: "/",
+      selected: false,
     },
     {
       name: "Holiday",
       path: "/",
+      selected: false,
     },
     {
       name: "Visa",
       path: "/",
+      selected: false,
     },
     {
       name: "Visa Guide",
       path: "/",
+      selected: false,
     },
   ];
 
@@ -50,7 +56,7 @@ const Navbar = () => {
             {menu.map((m, i) => (
               <li key={i}>
                 <Link href={m.path}>
-                  <a>{m.name}</a>
+                  <a className={m.selected ? "selected" : ""}>{m.name}</a>
                 </Link>
               </li>
             ))}

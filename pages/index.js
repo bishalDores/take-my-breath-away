@@ -1,5 +1,6 @@
 import FilterTab from "../common/components/FilterTab";
 import ServiceDetails from "../common/components/ServiceDetails";
+import Head from "next/head";
 
 const data = {
   class_category: [
@@ -59,19 +60,25 @@ const data = {
 
 export default function Home() {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-4 col-lg-3 left_panel_bg">
-          <div className="left_panel">
-            <FilterTab data={data} />
+    <>
+      <Head>
+        <title>ShareTrip</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4 col-lg-3 left_panel_bg">
+            <div className="left_panel">
+              <FilterTab data={data} />
+            </div>
           </div>
-        </div>
-        <div className="col-md-8 col-lg-9 right_panel_bg">
-          <div className="right_panel">
-            <ServiceDetails data={data} />
+          <div className="col-md-8 col-lg-9 right_panel_bg">
+            <div className="right_panel">
+              <ServiceDetails data={data} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

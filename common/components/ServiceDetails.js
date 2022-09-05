@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import {
-  Diamond,
-  DiamondWhite,
-  Lightning,
-  LightningWhite,
-  TabTwoIcon,
-  TabTwoIconWhite,
-} from "../svgIcons";
+import { Diamond, DiamondWhite, Lightning, LightningWhite, TabTwoIcon, TabTwoIconWhite } from "../svgIcons";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
@@ -17,6 +10,8 @@ import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import SeatPlan from "./SeatPlan";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -28,22 +23,9 @@ const MenuProps = {
     },
   },
 };
-const boarding_names = [
-  "Kalabagan",
-  "Gabtoli",
-  "Rajarbagh",
-  "Kachpur Bridge",
-  "Komlapur",
-  "Airport",
-];
+const boarding_names = ["Kalabagan", "Gabtoli", "Rajarbagh", "Kachpur Bridge", "Komlapur", "Airport"];
 
-const dropping_name = [
-  "Dampara",
-  "Tiger pass",
-  "Pahartoli",
-  "Pathorghata",
-  "Railway colony",
-];
+const dropping_name = ["Dampara", "Tiger pass", "Pahartoli", "Pathorghata", "Railway colony"];
 
 const ServiceDetails = ({ data }) => {
   const [value, setValue] = React.useState(1);
@@ -96,33 +78,17 @@ const ServiceDetails = ({ data }) => {
             },
           }}
         >
-          <Tab
-            icon={value === 0 ? <DiamondWhite /> : <Diamond />}
-            iconPosition="start"
-            label="Earliest Buses"
-            {...a11yProps(0)}
-          />
-          <Tab
-            icon={value === 1 ? <TabTwoIconWhite /> : <TabTwoIcon />}
-            iconPosition="start"
-            label="Cheapest Buses"
-            {...a11yProps(1)}
-          />
-          <Tab
-            icon={value === 2 ? <LightningWhite /> : <Lightning />}
-            iconPosition="start"
-            label="Available Seats"
-            {...a11yProps(2)}
-          />
-          <Tab
-            icon={value === 3 ? <LightningWhite /> : <Lightning />}
-            iconPosition="start"
-            label="Fastest Trips"
-            {...a11yProps(3)}
-          />
+          <Tab icon={value === 0 ? <DiamondWhite /> : <Diamond />} iconPosition="start" label="Earliest Buses" {...a11yProps(0)} />
+          <Tab icon={value === 1 ? <TabTwoIconWhite /> : <TabTwoIcon />} iconPosition="start" label="Cheapest Buses" {...a11yProps(1)} />
+          <Tab icon={value === 2 ? <LightningWhite /> : <Lightning />} iconPosition="start" label="Available Seats" {...a11yProps(2)} />
+          <Tab icon={value === 3 ? <LightningWhite /> : <Lightning />} iconPosition="start" label="Fastest Trips" {...a11yProps(3)} />
         </Tabs>
         <TabPanel value={value} index={0}>
-          Item One
+          <div className="no_flight">
+            <img src="/images/no-flights.png" alt="no flights" />
+            <h1>Sorry !</h1>
+            <p>No Bus Found.</p>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <div className="tab_details_generic">
@@ -237,50 +203,23 @@ const ServiceDetails = ({ data }) => {
                         <div className="seats_count-inner">
                           <div className="single">
                             <img src={data.seats.sold.image} alt="demo name" />
-                            <span>
-                              {data.seats.sold.amount > 0 &&
-                                data.seats.sold.amount + " sold out"}
-                            </span>
+                            <span>{data.seats.sold.amount > 0 && data.seats.sold.amount + " sold out"}</span>
                           </div>
                           <div className="single">
-                            <img
-                              src={data.seats.booked.image}
-                              alt="demo name"
-                            />
-                            <span>
-                              {data.seats.booked.amount > 0 &&
-                                data.seats.booked.amount + " Booked"}
-                            </span>
+                            <img src={data.seats.booked.image} alt="demo name" />
+                            <span>{data.seats.booked.amount > 0 && data.seats.booked.amount + " Booked"}</span>
                           </div>
                           <div className="single">
-                            <img
-                              src={data.seats.selected.image}
-                              alt="demo name"
-                            />
-                            <span>
-                              {data.seats.selected.amount > 0 &&
-                                data.seats.selected.amount + " Selected"}
-                            </span>
+                            <img src={data.seats.selected.image} alt="demo name" />
+                            <span>{data.seats.selected.amount > 0 && data.seats.selected.amount + " Selected"}</span>
                           </div>
                           <div className="single">
-                            <img
-                              src={data.seats.available.image}
-                              alt="demo name"
-                            />
-                            <span>
-                              {data.seats.available.amount > 0 &&
-                                data.seats.available.amount + " Available"}
-                            </span>
+                            <img src={data.seats.available.image} alt="demo name" />
+                            <span>{data.seats.available.amount > 0 && data.seats.available.amount + " Available"}</span>
                           </div>
                           <div className="single">
-                            <img
-                              src={data.seats.blocked.image}
-                              alt="demo name"
-                            />
-                            <span>
-                              {data.seats.blocked.amount > 0 &&
-                                data.seats.blocked.amount + " Blocked"}
-                            </span>
+                            <img src={data.seats.blocked.image} alt="demo name" />
+                            <span>{data.seats.blocked.amount > 0 && data.seats.blocked.amount + " Blocked"}</span>
                           </div>
                         </div>
                       </div>
@@ -292,10 +231,7 @@ const ServiceDetails = ({ data }) => {
                     <p>Per Person</p>
                     <p>BDT 750</p>
                     <p>BDT 775</p>
-                    <Button
-                      variant="contained"
-                      sx={{ fontSize: "14px", marginBottom: "12px" }}
-                    >
+                    <Button variant="contained" sx={{ fontSize: "14px", marginBottom: "12px" }}>
                       view seats
                     </Button>
                     <p className="cancel_policy">Cancellation Policy</p>
@@ -309,10 +245,18 @@ const ServiceDetails = ({ data }) => {
           </div>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+          <div className="no_flight">
+            <img src="/images/no-flights.png" alt="no flights" />
+            <h1>Sorry !</h1>
+            <p>No Seat Found.</p>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          Item Four
+          <div className="no_flight">
+            <img src="/images/no-flights.png" alt="no flights" />
+            <h1>Sorry !</h1>
+            <p>No Trip Found.</p>
+          </div>
         </TabPanel>
       </div>
     </div>
@@ -332,13 +276,7 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
+    <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
       {value === index && children}
     </div>
   );

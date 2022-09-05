@@ -84,6 +84,9 @@ body {
           padding: 16px;
           font-size: 14px;
         }
+        .selected {
+          color: #1882ff;
+        }
       }
     }
     @include responsive-size(tab) {
@@ -475,5 +478,13 @@ body {
         margin-right: 0 !important;
       }
     }
+  }
+}
+.no_flight {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  img {
+    width: 100%;
   }
 }

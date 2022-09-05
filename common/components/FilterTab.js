@@ -9,7 +9,7 @@ const FilterTab = ({ data }) => {
     <div className="filterTab_wrapper">
       <div className="header">
         <p>Sort & Filter</p>
-        <p>RESET</p>
+        <p style={{ cursor: "pointer" }}>RESET</p>
       </div>
       <hr className="custom_hr" />
       <div className="price_wrapper">

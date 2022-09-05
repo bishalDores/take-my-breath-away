@@ -11,13 +11,7 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
+    <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
       {value === index && children}
     </div>
   );
@@ -76,7 +70,7 @@ const SeatPlan = ({ items }) => {
         <div className="seat_info">
           {items.map((d, i) => {
             return (
-              <div className="seat_info-single">
+              <div className="seat_info-single" key={i}>
                 <div className="left_part">
                   <img src={d.image} alt="demo image" />
                   <span className="seat_num">{d.number}</span>
@@ -137,7 +131,7 @@ const SeatPlan = ({ items }) => {
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <p className="mt-4">Hold tight ! Policies will be updated soon.</p>
       </TabPanel>
     </>
   );
