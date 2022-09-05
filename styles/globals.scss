@@ -415,5 +415,65 @@ body {
         font-weight: 500;
       }
     }
+    .seat_info {
+      margin-top: 16px;
+      .seat_info-single {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 16px;
+        .left_part {
+          span {
+            font-size: 14px;
+            color: #4c4c4c;
+            font-weight: 500;
+          }
+          .seat_num {
+            margin-left: 12px;
+            margin-right: 12px;
+          }
+        }
+        .right_part {
+          p {
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: "SFM";
+          }
+        }
+        &:last-child {
+          border-bottom: 1px solid #e0e0e1;
+        }
+      }
+    }
+    .total_price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      margin-bottom: 35px;
+      p {
+        margin-bottom: 0;
+        &:first-child {
+          font-size: 14px;
+          color: #4c4c4c;
+          font-weight: 500;
+        }
+        &:nth-child(2) {
+          font-size: 14px;
+          font-weight: 500;
+          font-family: "SFM";
+        }
+      }
+    }
+    .confirm_service {
+      margin-left: -12px;
+      margin-right: -12px;
+      background-color: #fafafa;
+      padding: 15px 12px;
+      svg {
+        margin-right: 0 !important;
+      }
+    }
   }
 }

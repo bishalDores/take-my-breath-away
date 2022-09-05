@@ -40,6 +40,20 @@ const data = {
       image: "images/blocked.svg",
     },
   },
+  seats_booked: [
+    {
+      image: "/images/selected.svg",
+      number: "B4",
+      category: "B-Class",
+      price: "750",
+    },
+    {
+      image: "/images/selected.svg",
+      number: "C4",
+      category: "B-Class",
+      price: "750",
+    },
+  ],
   total_bus: 48,
 };
 
